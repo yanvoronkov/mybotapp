@@ -25,24 +25,12 @@ const start = () => {
 		}
 
 		if (text === '/help') {
-			return bot.sendMessage(chatId, `Напиши /start`);
+			return bot.sendMessage(chatId, `Напиши свой вопрос`);
 		}
 
 
 		return bot.sendMessage(chatId, 'Я вас не понимаю, выберите команду');
 	})
-
-
-	bot.on('callback_query', async msg => {
-		const data = msg.data;
-		const chatId = msg.message.chat.id;
-		console.log(chats[chatId]);
-		if (+data === chats[chatId]) {
-			return bot.sendMessage(chatId, 'Ты угадал', againOptions);
-		} else
-			return bot.sendMessage(chatId, `Ты не угадал, бот загадал число ${chats[chatId]}`, againOptions);
-	});
-
 
 }
 
