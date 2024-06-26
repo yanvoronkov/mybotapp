@@ -15,21 +15,20 @@ const start = () => {
 		const chatId = msg.chat.id;
 		const text = msg.text;
 
-		if (text === '/start') {
-			await bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/ea5/382/ea53826d-c192-376a-b766-e5abc535f1c9/7.webp');
-			return bot.sendMessage(chatId, 'Hello');
+		switch (text) {
+			case '/start':
+				await bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/ea5/382/ea53826d-c192-376a-b766-e5abc535f1c9/7.webp');
+				return bot.sendMessage(chatId, 'Hello');
+
+			case '/chat_id':
+				return bot.sendMessage(chatId, `Your chat id: ${chatId}`);
+
+			case '/help':
+				return bot.sendMessage(chatId, `Напиши свой вопрос`);
+
+			default:
+				return bot.sendMessage(chatId, 'Я вас не понимаю, выберите команду');
 		}
-
-		if (text === '/chat_id') {
-			return bot.sendMessage(chatId, `Your chat id: ${chatId}`);
-		}
-
-		if (text === '/help') {
-			return bot.sendMessage(chatId, `Напиши свой вопрос`);
-		}
-
-
-		return bot.sendMessage(chatId, 'Я вас не понимаю, выберите команду');
 	})
 
 }
