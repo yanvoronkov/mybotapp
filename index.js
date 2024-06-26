@@ -8,6 +8,7 @@ const start = () => {
 	bot.setMyCommands([
 		{ command: '/start', description: 'Старт' },
 		{ command: '/chat_id', description: 'Получить ID чата' },
+		{ command: '/help', description: 'Помощь' }
 	])
 
 	bot.on('message', async msg => {
@@ -21,6 +22,10 @@ const start = () => {
 
 		if (text === '/chat_id') {
 			return bot.sendMessage(chatId, `Your chat id: ${chatId}`);
+		}
+
+		if (text === '/help') {
+			return bot.sendMessage(chatId, `Напиши /start`);
 		}
 
 
